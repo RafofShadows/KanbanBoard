@@ -1,0 +1,20 @@
+<div class = 'container container-index' >
+    <h1>Список досок</h1>
+        <table id="kanban">
+            <tr>
+                <th>Название</th>
+                <th>Количество задач</th>
+                <th>Этап</th>
+            </tr>
+            <% current_user.kanbans.each do |kanb| %>
+            <tr>
+                <td><%= link_to kanb.name, kanban_path(kanb), "data-no-turbolink" => true %></td>
+                <td><%= kanb.tasks.count %></td>
+                <td><%= kanb.kanban_milestones.count %></td>
+            </tr>
+            <% end %>
+        </table>
+        <p class = "line" >
+            <%= link_to "Создать новую доску", makekanban_path %>
+        </p>
+</div>

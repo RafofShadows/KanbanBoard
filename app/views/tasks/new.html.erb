@@ -1,0 +1,21 @@
+<div class="container container-index">
+    <h3> Добавление новой задачи: </h3>
+    <%= form_for(@task) do |f| %>
+    <%= render 'shared/messages', object: f.object %>
+    <table id="kanban_edit" >
+        <tr>
+            <th> <%= f.label "Имя" %> </th>
+            <td> <%= f.text_field :name, value: "Задача", class: "textfield" %> </td>
+        </tr>
+        <tr>
+            <th> <%= f.label "Описание" %> </th>
+            <td> <%= f.text_area :content, placeholder: "Описание" %> </td>
+        </tr>
+    </table>
+    <p class = "line_edit" >
+        <%= f.submit "Сохранить задачу", class: "btn btn-sm btn-primary" %>
+        <%= link_to 'Отмена', kanban_path(session[:current_kanban]), class: "btn btn-sm btn-primary" %>
+    </p>
+    <% end %>
+</div>
+
